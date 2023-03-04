@@ -1,0 +1,287 @@
+<html>
+<head>
+<style>
+body {font-family: Verdana, sans-serif; margin:0;background:#eee;}
+h3{padding:13px;}
+p{padding:0 0 0 10px;}
+.header{position:relative;
+
+width:100%;
+height:300px;
+background:linear-gradient(90deg, rgba(000,000,000,0.6),rgba(000,000,000,0.3)), url(images/back.png) repeat;
+}
+.header1{position:absolute;
+color:#ccc;
+top:40px;
+right:40px;
+font-size:60px;
+}
+.circleTxt{
+position:absolute;
+left:100px;
+top:140px;
+width:300px;
+height:300px;
+border-radius:50%;
+
+background:linear-gradient(180deg, #ACD7CD, #469180);
+}
+
+.circleTxt span {
+  font: 40px Monaco,MonoSpace;
+  height: 200px;
+  position: absolute;
+  width: 20px;
+  left: 140px;
+  top: -50px;
+  color:rgb(255,87,65);
+mix-blend-mode:difference;
+
+  transform-origin: bottom center;
+}
+
+.textContainer{
+width:55%;
+float:right;
+padding:20px;
+
+}
+@media screen and (max-width: 500px) {
+  .header{position:relative;
+height:120px;
+}
+.header1{position:absolute;
+color:#ccc;
+top:10px;
+right:10px;
+font-size:20px;
+}
+
+.circleTxt{
+position:absolute;
+left:50px;
+top:60px;
+width:100px;
+height:100px;
+border-radius:50%;
+background:linear-gradient(180deg, #ACD7CD, #469180);
+}
+
+.circleTxt span {
+  font: 30px Monaco,MonoSpace;
+  height: 90px;
+  position: absolute;
+  width: 20px;
+  left: 40px;
+  top: -40px;
+  color:CC3300;
+mix-blend-mode:difference;
+z-index:1;
+  transform-origin: bottom center;
+}
+.textContainer{
+width:55%;
+float:right;
+font-size:12px;
+padding:10px;
+
+}
+}
+
+
+@media screen and (min-width:500px) and (max-width:900px){
+  .header{
+height:200px;
+background:linear-gradient(90deg, rgba(000,000,000,0.4),rgba(000,000,000,0.3)), url(images/back.png) repeat;
+}
+.header1{position:absolute;
+color:#ccc;
+top:20px;
+right:20px;
+font-size:38px;
+}
+
+.circleTxt{
+position:absolute;
+left:100px;
+top:100px;
+width:190px;
+height:190px;
+border-radius:50%;
+background:linear-gradient(180deg, #ACD7CD, #469180);
+}
+
+.circleTxt span {
+  font: 40px Monaco,MonoSpace;
+  height: 135px;
+  position: absolute;
+  width: 20px;
+  left: 85px;
+  top: -40px;
+  color:CC3300;
+mix-blend-mode:difference;
+z-index:1;
+  transform-origin: bottom center;
+}
+
+}
+
+@media screen and (min-width:900px) and (max-width:1400px){
+.header{position:relative;
+
+width:100%;
+height:300px;
+background:linear-gradient(90deg, rgba(000,000,000,0.6),rgba(000,000,000,0.3)), url(images/back.png) repeat;
+}
+.header1{position:absolute;
+color:#ccc;
+top:40px;
+right:40px;
+font-size:60px;
+}
+.circleTxt{
+position:absolute;
+left:100px;
+top:140px;
+width:300px;
+height:300px;
+border-radius:50%;
+
+background:linear-gradient(180deg, #ACD7CD, #469180);
+}
+
+.circleTxt span {
+  font: 40px Monaco,MonoSpace;
+  height: 200px;
+  position: absolute;
+  width: 20px;
+  left: 140px;
+  top: -50px;
+  color:rgb(255,87,65);
+mix-blend-mode:difference;
+
+  transform-origin: bottom center;
+}
+
+}
+</style> 
+</head>
+<body>
+<div class=header>
+<div class=header1>Some Main Heading...</div>
+<div id=cont class=circleTxt>
+
+</div>
+</div>
+</body>
+<div class=textContainer>
+ <p>This is a working example of the subheading text put into rotating circle.
+ It surely will not fit into any website concept, but who knows-perhaps somebody thinks 
+ , that this could be an option.</p>
+</div><!---textCont---->
+<script>
+var ang=0;
+var a=0;
+var str="Once upon a time it was an ocean";
+
+function setStr() {
+var input = document.getElementById("Txt");
+     str = input.value;
+clearInterval(int);	
+clearInterval(int1);
+
+var cont = document.getElementById("cont");
+cont.innerHTML='';
+var cont1 = document.getElementById("cont1");
+cont1.innerHTML='';
+rotateText();
+
+setInterval(setInMotion, 7000);
+
+rotateText1();
+
+setInterval(setInMotion1, 7000);
+}
+
+function rotateText() {
+  var x, i;
+ //x = document.getElementsByClassName("char");
+ x = str;//ocument.getElementsByClassName("char");
+a=Math.round(360/str.length);
+var cont = document.getElementById("cont");
+  for (i = 0; i <x.length; i++) {
+  var sp = document.createElement("span"); 
+sp.innerText = x[i];
+  
+  //x[i].style.transition="8s";
+  //x[i].style.height=(Math.random()*40+80)+"px";
+    //x[i].style.transform="rotate("+ang+"deg)";
+	sp.style.transform="rotate("+ang+"deg)";
+	cont.appendChild(sp); 
+	ang+=a;  
+  }
+//if(ang>360){ang=0;};
+
+
+}
+function setInMotion(){
+
+var cont = document.getElementById("cont");
+var sp = cont.getElementsByTagName("span");
+
+var x = str;
+  for (i = 0; i <x.length; i++) {
+  //sp[i].style.height=(Math.random()*40+120)+"px";
+ //sp[i].style.background="linear-gradient(-180deg,rgba(0,0,0,0.2),rgba(255,255,255,1)";
+	sp[i].style.transition="6s";
+	sp[i].style.transform="rotate("+ang+"deg)";
+	ang+=a;  
+  }
+if(ang>360){ang=0;};
+
+}
+var ang1=0;
+var a1=0;
+function rotateText1() {
+  var x, i;
+ //x = document.getElementsByClassName("char");
+ x = str;//ocument.getElementsByClassName("char");
+a1=Math.round(360/str.length);
+var cont = document.getElementById("cont1");
+  for (i = 0; i <x.length; i++) {
+  var sp = document.createElement("span"); 
+sp.innerText = x[i];
+  
+  //x[i].style.transition="8s";
+  //x[i].style.height=(Math.random()*40+80)+"px";
+    //x[i].style.transform="rotate("+ang+"deg)";
+	sp.style.transform="rotate("+ang1+"deg)";
+	cont.appendChild(sp); 
+	ang1+=a1;  
+  }
+//if(ang>360){ang=0;};
+
+
+}
+function setInMotion1(){
+
+var cont = document.getElementById("cont1");
+var sp = cont.getElementsByTagName("span");
+
+var x = str;
+  for (i = 0; i <x.length; i++) {
+  //sp[i].style.height=(Math.random()*40+120)+"px";
+ //sp[i].style.background="linear-gradient(-180deg,rgba(0,0,0,0.2),rgba(255,255,255,1)";
+	sp[i].style.transition="6s";
+	sp[i].style.transform="rotate("+ang1+"deg)";
+	ang1+=a1;  
+  }
+if(ang1>360){ang1=0;};
+
+}
+rotateText();
+
+var int=setInterval(setInMotion, 7000);
+
+</script>
+</html>
